@@ -8,7 +8,7 @@ jobs:
         auth:
           username: gms46
           #password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
-          password: beer$larval=money
+          password: fd0277d6-3859-44ce-8ac1-d37606afd061
     steps:
       - checkout
       - run: echo "this is the build job"
@@ -17,7 +17,7 @@ jobs:
       - image: circleci/nodejs:latest
         auth:
           username: gms46
-          password: beer$larval=money  # context / project UI env-var reference
+          password: fd0277d6-3859-44ce-8ac1-d37606afd061 # context / project UI env-var reference
     steps:
       - checkout
       - run: echo "this is the test job"
