@@ -1,30 +1,18 @@
-version: 2.1
-
-# Define the jobs we want to run for this project
+version: 2.0
 jobs:
   build:
     docker:
-      - image: circleci/nodejs:latest
+      - image: cimg/ruby:2.7.1-node
         auth:
-          username: gms46
-          #password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
-          password: fd0277d6-3859-44ce-8ac1-d37606afd061
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
     steps:
       - checkout
-      - run: echo "this is the build job"
-  test:
-    docker:
-      - image: circleci/nodejs:latest
-        auth:
-          username: gms46
-          password: fd0277d6-3859-44ce-8ac1-d37606afd061 # context / project UI env-var reference
-    steps:
-      - checkout
-      - run: echo "this is the test job"
-
-# Orchestrate our job run sequence
-workflows:
-  build_and_test:
-    jobs:
-      - build
-      - test
+      - run:
+          name: "Update Node.js and npm"
+          command: |
+            curl -sSL "https://nodejs.org/dist/v11.10.0/node-v11.10.0-linux-x64.tar.xz" | sudo tar --strip-components=2 -xJ -C /usr/local/bin/ node-v11.10.0-linux-x64/bin/node
+            curl https://www.npmjs.com/install.sh | sudo bash
+      - run:
+          name: Check current version of node
+          command: node -v
