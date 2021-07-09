@@ -1,18 +1,13 @@
 jobs:
-  build:
+  example-job:
     docker:
-      # Primary Executor
-      - image: circleci/openjdk:11.0-jdk
-        auth:
-          username: GMS46
-          password: beer$larval=money  # context / project UI env-var reference
+      # replace with your preferred image
+      - image: cimg/base:stable
+    steps:
+      - node/install:
+          install-yarn: true 
 
-      # Dependency Service(s)
-      - image: postgres:10.8
-        auth:
-          username: GMS46
-          password: beer$larval=money  # context / project UI env-var reference
-        environment:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: postgres
+workflows:
+  example-workflow:
+    jobs:
+      - example-job
