@@ -4,7 +4,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: cimg/nodejs:latest
+      - image: gms46/circleci_node_gms:latest
         auth:
           username: gms46
           #password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
@@ -14,7 +14,7 @@ jobs:
       - run: echo "this is the build job"
   test:
     docker:
-      - image: cimg/nodejs:latest
+      - image: gms46/circleci_node_gms:latest
         auth:
           username: gms46
           password: fd0277d6-3859-44ce-8ac1-d37606afd061 # context / project UI env-var reference
