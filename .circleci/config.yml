@@ -6,7 +6,7 @@ jobs:
     docker:
       - image: circleci/nodejs:latest
         auth:
-          username: GMS46
+          username: gms46
           #password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
           password: beer$larval=money
     steps:
@@ -16,7 +16,7 @@ jobs:
     docker:
       - image: circleci/nodejs:latest
         auth:
-          username: GMS46
+          username: gms46
           password: beer$larval=money  # context / project UI env-var reference
     steps:
       - checkout
